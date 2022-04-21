@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<script>
+
+$(function update_time(){
+    $.ajax({
+        type:"POST",
+        url:'/update_time',
+        dataType:'json',
+        success:function(data){
+            $(div_time).replaceWith(data);
+        },
+        complete: function(){
+            setTimeout(update_time, 1000)
+        }
+    })
+})
+</script>
+
+
+
+
+
+<html>
+  <h1>Time in UTC</h1>
+  <div id="div_time">{{time}}</div>
+</html>
